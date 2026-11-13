@@ -1,8 +1,10 @@
 # Revisiting SASRec on Amazon Reviews 2023
 
+[![CI](https://github.com/alina0607/sasrec-amazon-2023/actions/workflows/ci.yml/badge.svg)](https://github.com/alina0607/sasrec-amazon-2023/actions/workflows/ci.yml)
+
 A reproducibility study of **SASRec** (Self-Attentive Sequential Recommendation; Kang & McAuley, ICDM 2018) on the 2023 release of the Amazon review data.
 
-> **Status:** work in progress. This repository currently holds only the project layout.
+> **Status:** work in progress. This repository currently holds the project layout and tooling.
 
 ## Objective
 
@@ -35,6 +37,24 @@ Following the original paper:
 ## Data
 
 Download the data from the [Amazon Reviews 2023 page on Hugging Face](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) into `data/`. Raw data files are not committed to this repository. The dataset is released by the McAuley Lab for research use. This project uses it for academic purposes only.
+
+## Development
+
+Python 3.11 or newer, managed with [uv](https://docs.astral.sh/uv/). `uv sync` creates the
+environment from `uv.lock`, including the development tools:
+
+```bash
+uv sync
+uv run ruff format --check .        # formatting
+uv run ruff check .                 # lint
+uv run mypy src/sasrec2023 tests    # type check
+uv run pytest                       # tests
+```
+
+GitHub Actions runs the same four checks on every push and pull request
+([`.github/workflows/ci.yml`](.github/workflows/ci.yml)). On Linux the CPU build of PyTorch is
+installed, so CI does not download the CUDA libraries. `uv run pre-commit install` runs the same
+checks (except the tests) before every commit.
 
 ## References
 
