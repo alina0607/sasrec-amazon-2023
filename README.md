@@ -4,7 +4,7 @@
 
 A reproducibility study of **SASRec** (Self-Attentive Sequential Recommendation; Kang & McAuley, ICDM 2018) on the 2023 release of the Amazon review data.
 
-> **Status:** work in progress. This repository currently holds the project layout and tooling.
+> **Status:** work in progress. The whole project is one notebook, [`sasrec_amazon_2023.ipynb`](sasrec_amazon_2023.ipynb); sections marked TODO are not written yet.
 
 ## Objective
 
@@ -27,34 +27,33 @@ Following the original paper:
 
 ## Repository layout
 
-| Folder | Contents |
+| Path | Contents |
 |---|---|
-| `src/` | Data loading, models (SASRec and baselines), training, and evaluation code |
-| `notebooks/` | Exploratory data analysis and result analysis |
-| `results/` | Per-method score files used by the evaluation script |
-| `data/` | Downloaded data (not tracked by git; see below) |
+| `sasrec_amazon_2023.ipynb` | the project: data, models, training, evaluation, results and discussion |
+| `docs/team_spec.md` | how the four of us work on one notebook (git, branches, checks) |
+| `data/` | the Amazon Reviews 2023 files the notebook reads |
+| `results/` | small CSV files with the trained results, read when `RUN_EXPERIMENTS = False` |
 
 ## Data
 
-Download the data from the [Amazon Reviews 2023 page on Hugging Face](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) into `data/`. Raw data files are not committed to this repository. The dataset is released by the McAuley Lab for research use. This project uses it for academic purposes only.
+The notebook uses the official 5-core `last_out_w_his` files of
+[Amazon Reviews 2023](https://amazon-reviews-2023.github.io/), stored in `data/` so the
+notebook runs after a `git pull` with no download. The dataset is released by the McAuley
+Lab for research use; this project uses it for academic purposes only.
 
-## Development
+## Running the notebook
 
-Python 3.11 or newer, managed with [uv](https://docs.astral.sh/uv/). `uv sync` creates the
-environment from `uv.lock`, including the development tools:
+Python 3.11 or newer, managed with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv sync
-uv run ruff format --check .        # formatting
-uv run ruff check .                 # lint
-uv run mypy src/sasrec2023 tests    # type check
-uv run pytest                       # tests
+uv sync                    # installs the packages from uv.lock into .venv
+uv run pre-commit install  # once: clears notebook outputs and formats code on commit
+uv run jupyter lab         # or open the notebook in VS Code with the .venv kernel
 ```
 
-GitHub Actions runs the same four checks on every push and pull request
-([`.github/workflows/ci.yml`](.github/workflows/ci.yml)). On Linux the CPU build of PyTorch is
-installed, so CI does not download the CUDA libraries. `uv run pre-commit install` runs the same
-checks (except the tests) before every commit.
+Run all cells from the top. GitHub Actions lints the notebook and runs it from top to bottom
+on every push and pull request ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)). On
+Linux the CPU build of PyTorch is installed, so CI does not download the CUDA libraries.
 
 ## References
 

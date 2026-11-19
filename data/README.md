@@ -1,5 +1,13 @@
 # data/
 
-Put the downloaded Amazon Reviews 2023 files here. Everything in this folder except this README is ignored by git.
+The Amazon Reviews 2023 files the notebook reads, one folder per category:
 
-Source: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023
+```
+data/<Category>/<Category>.train.csv.gz
+data/<Category>/<Category>.valid.csv.gz
+data/<Category>/<Category>.test.csv.gz
+```
+
+Source: the official 5-core `last_out_w_his` files from
+https://amazon-reviews-2023.github.io/ (see `docs/team_spec.md`, Section 7.1).
+The dataset is released by the McAuley Lab for research use.

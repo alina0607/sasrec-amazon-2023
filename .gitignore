@@ -1,6 +1,5 @@
-# Data (download separately, see README)
-data/*
-!data/README.md
+# Personal draft notebooks (docs/team_spec.md, Section 2)
+drafts/
 
 # Training runs and checkpoints
 runs/
@@ -14,7 +13,6 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
-.pytest_cache/
 .ipynb_checkpoints/
 
 # macOS

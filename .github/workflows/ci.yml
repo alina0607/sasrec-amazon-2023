@@ -1,4 +1,4 @@
-# Lint, type-check and test every push and pull request.
+# Lint the notebook and run it from top to bottom on every push and pull request.
 name: CI
 
 on:
@@ -30,8 +30,6 @@ jobs:
           uv run ruff format --check .
           uv run ruff check .
 
-      - name: Type check
-        run: uv run mypy src/sasrec2023 tests
-
-      - name: Test
-        run: uv run pytest
+      # The course requires the notebook to run from top to bottom.
+      - name: Run the notebook
+        run: uv run jupyter nbconvert --to notebook --execute sasrec_amazon_2023.ipynb --output-dir "$RUNNER_TEMP"

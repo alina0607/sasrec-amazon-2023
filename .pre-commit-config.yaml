@@ -9,18 +9,15 @@ repos:
       - id: check-toml
       - id: check-added-large-files
         args: ["--maxkb=1024"]
+        exclude: ^data/  # the dataset is committed on purpose (notebook Section 3.1)
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.17.5
     hooks:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
-  # mypy runs in the project environment (uv), so it sees the real dependencies.
-  - repo: local
+  # Clear notebook outputs before every commit, so a re-run does not change every cell.
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
     hooks:
-      - id: mypy
-        name: mypy
-        entry: uv run mypy src/sasrec2023 tests
-        language: system
-        types: [python]
-        pass_filenames: false
+      - id: nbstripout
