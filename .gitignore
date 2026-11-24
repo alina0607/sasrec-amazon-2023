@@ -1,6 +1,9 @@
 # Personal draft notebooks (docs/team_spec.md, Section 2)
 drafts/
 
+# Data: the notebook downloads it on its first run (data/README.md)
+data/*/
+
 # Training runs and checkpoints
 runs/
 checkpoints/
