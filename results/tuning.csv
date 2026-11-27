@@ -1,0 +1,3 @@
+method,d,l2,valid_ndcg10,epochs
+sasrec,10,,0.36717838048934937,86
+sasrec,50,,0.34763142466545105,65
