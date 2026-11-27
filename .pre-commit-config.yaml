@@ -9,9 +9,9 @@ repos:
       - id: check-toml
       - id: check-added-large-files
         args: ["--maxkb=1024"]
-        # the dataset (notebook Section 3.1) and the demo model (Section 6) are
-        # committed on purpose
-        exclude: ^(data/|results/sasrec_demo\.pt$)
+        # the dataset (notebook Section 3.1), the demo model and every user's ranks
+        # (Section 6) are committed on purpose
+        exclude: ^(data/|results/sasrec_demo\.pt$|results/ranks\.csv\.gz$)
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.17.5
     hooks:
