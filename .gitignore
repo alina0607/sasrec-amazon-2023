@@ -9,6 +9,8 @@ runs/
 checkpoints/
 *.pt
 *.pth
+# except the SASRec model for the demo (notebook Sections 6 and 10)
+!results/sasrec_demo.pt
 
 # Python
 __pycache__/
