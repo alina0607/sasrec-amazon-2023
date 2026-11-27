@@ -14,9 +14,8 @@ The original paper evaluated SASRec on an earlier version of the Amazon dataset.
 
 - **RQ1 (main question).** Do the sampled evaluation used in the paper (ranking the ground-truth item against 100 sampled negatives) and full ranking over all items put the methods in the same order?
 - **RQ2.** Does SASRec still rank above the non-neural baselines on Amazon Reviews 2023? We compare the order of the methods with the paper's, not the exact numbers, because the data differs.
-- **RQ3 (if time allows).** Which components of SASRec matter most? We focus on positional embeddings, shared item embeddings, and the number of self-attention blocks.
 
-We start with SASRec, PopRec and BPR under both protocols; FMC, FPMC and the ablations follow as time allows.
+We start with SASRec, PopRec and BPR under both protocols; FMC and FPMC follow as time allows.
 
 ## Protocol
 
@@ -81,4 +80,4 @@ Linux the CPU build of PyTorch is installed, so CI does not download the CUDA li
 
 [5] W. Krichene and S. Rendle, "On sampled metrics for item recommendation," in *Proc. ACM SIGKDD*, 2020.
 
-The full list, in the format we hand in, is in Section 12 of the notebook.
+The full list, in the format we hand in, is in Section 11 of the notebook.

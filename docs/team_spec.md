@@ -19,13 +19,13 @@ This document only says *how* we work on one notebook together.
 
 | The course asks for | Where it is |
 |---|---|
-| A notebook with problem definition, data, methods, evaluation, results, discussion; choices explained and justified | `sasrec_amazon_2023.ipynb`, Sections 1 to 11 |
+| A notebook with problem definition, data, methods, evaluation, results, discussion; choices explained and justified | `sasrec_amazon_2023.ipynb`, Sections 1 to 10 |
 | Clear, well commented code; the notebook runs from top to bottom | all code is in the notebook; CI runs it from top to bottom on every push |
 | Data, or a link to it | `data/` in this repository (notebook Section 3.1) |
 | Contribution statement agreed by all members | notebook Section 0 |
 | A note on which generative AI tools we used and for what | notebook Section 0, every member writes their own row |
-| Observations, limitations, future work | notebook Section 11 |
-| Demo video | recorded by Matthew from the demo in notebook Section 10; uploaded to Moodle, not committed to git |
+| Observations, limitations, future work | notebook Section 10 |
+| Demo video | recorded by Matthew from the demo in notebook Section 9; uploaded to Moodle, not committed to git |
 
 The grade is on **depth and how well choices are justified**, not on how many things we try,
 and on **code clarity**. Every member must be able to explain their part in their own words
@@ -46,8 +46,9 @@ keep that rare:
    a rule that the team agreed on, ask first.
 2. **Pull before you start, push soon after you finish.** Small, frequent commits conflict less
    than one large one.
-3. **Work on a branch** (`frank/data`, `kyle/baselines`, `matthew/eda`, `alina/sasrec`) and
-   merge through a pull request. CI must pass.
+3. **Commit straight to `main`**, no branches or pull requests (it's a small project). Run
+   `git pull --rebase` right before you push, and check that CI is green on GitHub afterwards;
+   if it's red, fix it first thing.
 4. **Outputs are cleared before every commit.** Outputs change on every run and would make a
    conflict in every cell. `pre-commit` clears them for you. The version we hand in is run once
    with outputs, by Matthew, at the end.
